@@ -4,7 +4,7 @@ public class RevString {
     public static void main(String[] args) {
 
         // revers the String
-        String str = "Java Programming";
+        String str = "MADAM";
         String rev = "";
         for (int i = str.length() - 1; i >= 0; i--) {
             rev += str.charAt(i);
@@ -53,16 +53,33 @@ public class RevString {
         }
 
         // Find ocurrences of a character in String 
-        char ch = 'a';
-        int count = 0;
+         System.out.println("Duplicate characters are:");
 
         for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == ch) {
-                count++;
+
+            int count = 1;
+
+            // Skip already checked characters
+            if (str.charAt(i) == ' ')
+                continue;
+
+            for (int j = i + 1; j < str.length(); j++) {
+
+                if (str.charAt(i) == str.charAt(j)) {
+                    count++;
+
+                    // Mark duplicate character
+                    str = str.substring(0, j) + ' ' + str.substring(j + 1);
+                }
             }
+
+            if (count > 1) {
+                System.out.println(str.charAt(i) + " = " + count);
+            }
+
         }
-        System.out.println("Occurrences of '" + ch + "': " + count);
-        
+
+
     }
 
 }
